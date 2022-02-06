@@ -1,4 +1,4 @@
-types:
+ypes:
   Square: string
   Board: Piece[]
 
@@ -14,11 +14,16 @@ types:
     - KING
   GameStatus:
     - WAITING
-    - WHITE_TURN
-    - BLACK_TURN
+    - WHITE_HAND_TURN
+    - WHITE_BRAIN_TURN
+    - BLACK_HAND_TURN
+    - BLACK_BRAIN_TURN
     - WHITE_WON
     - BLACK_WON
     - DRAW
+  Role:
+    - HAND
+    - BRAIN
 
   Piece:
     color: Color
@@ -27,11 +32,16 @@ types:
   PlayerState:
     board: Board
     status: GameStatus
-    color: Color
-    opponent: UserId?
+    color: Color?
+    role: Role?
+    moveablePiece : PieceType?
+    opponent: UserId[]
 
 methods:
+  joinGame:
   startGame:
+  pickPiece:
+    piece: PieceType
   movePiece:
     from: Square
     to: Square
